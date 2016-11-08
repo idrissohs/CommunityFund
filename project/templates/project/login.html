@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>CommunityFund</title>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.2/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.2/css/bootstrap-theme.min.css' %}">
+        <script src="{% static 'bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'jquery-2.1.1/jquery-2.1.1.min.js' %}"></script>
+
+    </head>
+
+    <body>
+        <h1><a>FUCK YEA</a></h1>
+
+        <button type="button" class="btn btn-primary">BOOTSTRAP IS WORKING</button>
+
+        <h1>Login to Community Fund</h1>
+
+        <form id="login_form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+
+            <input type="submit" value="submit" />
+
+        </form>
+
+        
+        <form id="register" method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <input type="submit" value="register" />
+
+        </form>
+    </body>
+</html>

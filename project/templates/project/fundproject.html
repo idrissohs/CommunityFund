@@ -1,0 +1,24 @@
+{% extends "project/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.2/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.2/css/bootstrap-theme.min.css' %}">
+        <script src="{% static 'bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'jquery-2.1.1/jquery-2.1.1.min.js' %}"></script>
+    </head>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        <h1>Project Name: </h1>
+        <h2>{{ project.title }}</h2>
+        <h1>Project Information:</h1>
+        <p>{{ project.about|linebreaks }}</p>
+        <h1>would you like to fund this project?<h1>
+            {{form.as_p}}
+        <a class="btn btn-default" href="../../funder/" role="button"> Back </a>
+        <button type="submit" class="save btn btn-default"> Confirm </button>
+    </form>
+</html>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "project/base.html" %}
+
+
+{% block content %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>CommunityFund!</h1>
+        <p>Join today to help support ongoing projects in your community or get help raising funds towards a community project!.</p>
+
+         <form id="register" method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+
+        	<p><a class="btn btn-primary btn-lg" href="../register/" role="button">Join Today &raquo;</a></p>
+        </form>
+      </div>
+    </div>
+{% endblock %}

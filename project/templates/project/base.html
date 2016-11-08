@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Property Value CommunityFund Project">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Property Value Helping Community Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'csc/jumbotron.css' %}">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <ul class="nav nav-tabs" style="background-color:lightgrey">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" style="letter-spacing: 3px" style="font-size: 29pt" href="#">Property Value</a>
+          </div>
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="{% url 'profile' user.pk %}">Profile</a></li>
+          <li role="presentation"><a href="#">Messages</a></li>
+    {% if user.is_authenticated %}
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">Welcome, {{user.username}}</a></li>
+              <li><a href="/logout">log out</a></li>
+            </ul>
+          </div>
+        </ul>
+    {% else %}  
+          <div id="navbar" class="navbar-collapse collapse">
+        
+    	      <form id="login_form" class="navbar-form navbar-right"  method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+    	        <div class="form-group">
+                <input type="text" name="username" placeholder="username" class="form-control" />
+              </div>
+    	        <div class="form-group">
+                <input type="password" name="password" placeholder="password" class="form-control" />
+              </div>
+
+              <button type="submit" class="btn btn-success"> Sign in </button>
+              <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+          </div><!-- end of the login form-->
+        </ul>
+    {% endif %}
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+    {% block content %}
+    {% endblock %}
+    <style>
+	       .greyfooter {height: 100px;
+		    background-color: lightgrey;
+		    bottom: 0;
+                    padding: 20px;
+		   }
+    </style>
+    <hr>
+    <div  class="greyfooter">
+    <footer>
+    <center><p>&copy; Property Value 2015</p></center>
+    </footer>
+    </div>
+    <!-- </div>--> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+
+

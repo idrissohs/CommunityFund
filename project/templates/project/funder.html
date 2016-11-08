@@ -1,0 +1,42 @@
+
+{% extends "project/base.html"%}
+{% load staticfiles %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.2/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'bootstrap-3.3.2/css/bootstrap-theme.min.css' %}">
+        <script src="{% static 'bootstrap-3.3.2/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'jquery-2.1.1/jquery-2.1.1.min.js' %}"></script>
+    </head>
+    <body>  
+          <h1>Funder Home Page</h1>
+          <div class="table-responsive">          
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Initiator</th>
+                    <th>project name</th>
+                    <th>Funding so far</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!--display projects-->
+                  {% for project in projects %}
+                    <tr>
+                      <td>{{project.author}}</td>
+                	    <td>{{project.title}}</td>
+                	    <td>{{project.total_fund}}</td>
+                      <td>
+		                    <a class="btn btn-default" href="{% url 'project.views.fund_project' pk=project.pk%}"> Select </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+          </div>
+    </body>
+</html>
+{% endblock %}
